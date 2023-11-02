@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import arcadeIcon from "../../assets/images/icon-arcade.svg";
 import advancedIcon from "../../assets/images/icon-advanced.svg";
 import proIcon from "../../assets/images/icon-pro.svg";
-import { useState } from "react";
+import { AppContext } from "../../pages/signup/Signup";
 
 const Plan = () => {
-  let [selectedPlan, setPlan] = useState(false);
+  let { selectedBilling, setBilling, setSelectedPlan, selected, setSelected } =
+    useContext(AppContext);
 
-  const plans = [
+  let plans = [
     {
       id: 1,
       name: "Arcade",
@@ -37,6 +38,12 @@ const Plan = () => {
     },
   ];
 
+  const handlePlan = (id) => {
+    setSelected(id);
+    let aux = plans.filter((plan) => plan.id === id);
+    setSelectedPlan(aux[0]);
+  };
+
   return (
     <div className="mx-4 border border-solid bg-white p-5 pt-8 rounded-xl">
       <h1 className="text-2xl font-bold">Select your plan</h1>
@@ -47,15 +54,19 @@ const Plan = () => {
         return (
           <div
             key={plan.id}
-            className="flex p-3 border border-solid border-gray-300 mt-3 rounded-md"
-            onClick={() => console.log(plan.id)}
+            className={
+              plan.id === selected
+                ? `flex p-3 border-2 border-solid border-[#564B96] mt-3 rounded-md`
+                : `flex p-3 border border-solid border-gray-300 mt-3 rounded-md`
+            }
+            onClick={() => handlePlan(plan.id)}
           >
             <div>
               <img src={plan.icon} alt="" />
             </div>
             <div className="ml-4">
               <p className="font-bold">{plan.name}</p>
-              {selectedPlan ? (
+              {selectedBilling ? (
                 <div>
                   <p className="text-gray-400">${plan.price.yearly}/yr</p>
                   <p className="text-sm text-[#172A57] font-bold">
@@ -76,12 +87,12 @@ const Plan = () => {
             <input
               type="checkbox"
               className="sr-only peer"
-              checked={selectedPlan}
+              checked={selectedBilling}
               readOnly
             />
             <div
               onClick={() => {
-                setPlan(!selectedPlan);
+                setBilling(!selectedBilling);
               }}
               className="w-11 h-6 bg-[#172A57] rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#172A57]"
             ></div>
