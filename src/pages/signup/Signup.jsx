@@ -10,6 +10,7 @@ import Footer from "../../components/footer/Footer";
 import Plan from "../../components/form/Plan";
 import AddOns from "../../components/form/AddOns";
 import Finish from "../../components/form/Finish";
+import Thanks from "../../components/form/Thanks";
 
 export const AppContext = createContext();
 
@@ -53,6 +54,7 @@ const Signup = () => {
               <Route path="/plans" element={<Plan />}></Route>
               <Route path="/addons" element={<AddOns />}></Route>
               <Route path="/finish" element={<Finish />}></Route>
+              <Route path="/thanks" element={<Thanks />}></Route>
             </Routes>
           </div>
           <div>

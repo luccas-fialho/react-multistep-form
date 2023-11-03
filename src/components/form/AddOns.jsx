@@ -1,9 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../pages/signup/Signup";
 
 const AddOns = () => {
   let { selectedBilling, selectedAddons, setSelectedAddons } =
     useContext(AppContext);
+
+  useEffect(() => {
+    setSelectedAddons([])
+  }, [setSelectedAddons])
 
   const [addOns] = useState([
     {

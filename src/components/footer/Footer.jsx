@@ -54,36 +54,45 @@ const Footer = () => {
       )}
 
       {location.pathname === "/" ? (
-        <button className="bg-[#172A57] h-2/3 w-1/3 rounded-md text-center text-white px-3">
-          <Link to="/plans" onClick={() => setStage(stage + 1)}>
-            Next Step
-          </Link>
-        </button>
+        <Link
+          className="bg-[#172A57] h-2/3 w-1/3 rounded-md text-center text-white p-3"
+          to="/plans"
+          onClick={() => handleClick()}
+        >
+          Next Step
+        </Link>
       ) : (
         ""
       )}
       {location.pathname === "/plans" ? (
-        <button className="bg-[#172A57] h-2/3 w-1/3 rounded-md text-center text-white px-3">
-          <Link to="/addons" onClick={() => setStage(stage + 1)}>
-            Next Step
-          </Link>
-        </button>
+        <Link
+          className="bg-[#172A57] h-2/3 w-1/3 rounded-md text-center text-white p-3"
+          to="/addons"
+          onClick={() => handleClick()}
+        >
+          Next Step
+        </Link>
       ) : (
         ""
       )}
       {location.pathname === "/addons" ? (
-        <button className="bg-[#172A57] h-2/3 w-1/3 rounded-md text-center text-white px-3">
-          <Link to="/finish" onClick={() => handleClick()}>
-            Next Step
-          </Link>
-        </button>
+        <Link
+          className="bg-[#172A57] h-2/3 w-1/3 rounded-md text-center text-white p-3"
+          to="/finish"
+          onClick={() => handleClick()}
+        >
+          Next Step
+        </Link>
       ) : (
         ""
       )}
       {location.pathname === "/finish" ? (
-        <button className="bg-[#483FFD] h-2/3 w-1/3 rounded-md text-center text-white px-6">
+        <Link
+          className="bg-[#483FFD] h-2/3 w-1/3 rounded-md text-center text-white p-3"
+          to="/thanks"
+        >
           Confirm
-        </button>
+        </Link>
       ) : (
         ""
       )}

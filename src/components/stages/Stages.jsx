@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../pages/signup/Signup";
-import { Link } from "react-router-dom";
 
 const Stages = () => {
-  const { stage, setStage } = useContext(AppContext);
+  const { stage } = useContext(AppContext);
 
   return (
     <div className="flex justify-center gap-4 py-8">
@@ -13,9 +12,8 @@ const Stages = () => {
             ? `rounded-full border border-solid border-slate-100 w-10 h-10 text-black bg-[#C2E5FB]`
             : `rounded-full border border-solid border-slate-100 w-10 h-10 text-slate-50`
         }
-        onClick={() => setStage(1)}
       >
-        <Link to="/">1</Link>
+        1
       </button>
       <button
         className={
@@ -23,9 +21,8 @@ const Stages = () => {
             ? `rounded-full border border-solid border-slate-100 w-10 h-10 text-black bg-[#C2E5FB]`
             : `rounded-full border border-solid border-slate-100 w-10 h-10 text-slate-50`
         }
-        onClick={() => setStage(2)}
       >
-        <Link to="/plans">2</Link>
+        2
       </button>
       <button
         className={
@@ -33,9 +30,8 @@ const Stages = () => {
             ? `rounded-full border border-solid border-slate-100 w-10 h-10 text-black bg-[#C2E5FB]`
             : `rounded-full border border-solid border-slate-100 w-10 h-10 text-slate-50`
         }
-        onClick={() => setStage(3)}
       >
-        <Link to="/addons">3</Link>
+        3
       </button>
       <button
         className={
@@ -43,9 +39,8 @@ const Stages = () => {
             ? `rounded-full border border-solid border-slate-100 w-10 h-10 text-black bg-[#C2E5FB]`
             : `rounded-full border border-solid border-slate-100 w-10 h-10 text-slate-50`
         }
-        onClick={() => setStage(4)}
       >
-        <Link to="/finish">4</Link>
+        4
       </button>
     </div>
   );

@@ -7,13 +7,15 @@ const Finish = () => {
 
   let totalAddOns = 0;
 
-  selectedBilling
-    ? selectedPlan.selectedAddons?.forEach(
-        (addOn) => (totalAddOns += addOn.price.yearly)
-      )
-    : selectedPlan.selectedAddons?.forEach(
-        (addOn) => (totalAddOns += addOn.price.monthly)
-      );
+  selectedPlan.selectedAddons
+    ? selectedBilling
+      ? selectedPlan.selectedAddons.forEach(
+          (addOn) => (totalAddOns += addOn.price.yearly)
+        )
+      : selectedPlan.selectedAddons.forEach(
+          (addOn) => (totalAddOns += addOn.price.monthly)
+        )
+    : (totalAddOns = 0);
 
   return (
     <div className="mx-4 border border-solid bg-white p-5 pt-8 rounded-xl">
@@ -38,32 +40,36 @@ const Finish = () => {
           <div>
             <p className="text-[#1E3358] font-bold">
               {selectedBilling
-                ? `$${selectedPlan.price.yearly}/yr`
-                : `$${selectedPlan.price.monthly}/mo`}
+                ? `$${selectedPlan?.price.yearly}/yr`
+                : `$${selectedPlan?.price.monthly}/mo`}
             </p>
           </div>
         </div>
         <div className="mt-3">
-          {selectedPlan.selectedAddons?.map((addOn) => {
-            return (
-              <div key={addOn.id} className="flex justify-between mt-3">
-                <p className="text-gray-400">{addOn.name}</p>
-                <p className="text-[#1E3358]">
-                  {selectedBilling
-                    ? `+$${addOn.price.yearly}/yr`
-                    : `+$${addOn.price.monthly}/mo`}
-                </p>
-              </div>
-            );
-          })}
+          {selectedPlan.selectedAddons ? (
+            selectedPlan.selectedAddons.map((addOn) => {
+              return (
+                <div key={addOn.id} className="flex justify-between mt-3">
+                  <p className="text-gray-400">{addOn.name}</p>
+                  <p className="text-[#1E3358]">
+                    {selectedBilling
+                      ? `+$${addOn?.price.yearly}/yr`
+                      : `+$${addOn?.price.monthly}/mo`}
+                  </p>
+                </div>
+              );
+            })
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
       <div className="flex justify-between items-center p-4">
         <p className="text-gray-400">Total (per month)</p>
         <p className="text-[#493BC7] font-bold">
           {selectedBilling
-            ? `$${selectedPlan.price.yearly + totalAddOns}/yr`
-            : `$${selectedPlan.price.monthly + totalAddOns}/mo`}
+            ? `$${selectedPlan?.price.yearly + totalAddOns}/yr`
+            : `$${selectedPlan?.price.monthly + totalAddOns}/mo`}
         </p>
       </div>
     </div>
